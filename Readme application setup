@@ -169,3 +169,7 @@ GET /api/users/profile - Get user profile (protected route)
 
 Headers: Authorization: Bearer {token}
 Response: User object
+
+
+Hosted link : "https://af-country-api-manu.vercel.app/" 
+in vercel
