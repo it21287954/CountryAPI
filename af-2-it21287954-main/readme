@@ -1,0 +1,171 @@
+### Countries Explorer
+A React application that consumes data from the REST Countries API to display and interact with country information. This project is built for the SE3040 - Application Frameworks course assignment.
+Project Structure
+countries-explorer/
+├── backend/               # Backend server code
+│   ├── config/            # Database configuration
+│   ├── controllers/       # Route controllers
+│   ├── middleware/        # Custom middleware
+│   ├── models/            # Database models
+│   ├── routes/            # API routes
+│   ├── utils/             # Utility functions
+│   ├── __tests__/         # Backend tests
+│   └── server.js          # Main server file
+│
+├── frontend/              # React frontend code
+│   ├── public/            # Static files
+│   ├── src/               # React source code
+│   │   ├── components/    # React components
+│   │   ├── context/       # Context providers
+│   │   ├── hooks/         # Custom hooks
+│   │   ├── pages/         # Page components
+│   │   ├── services/      # API service calls
+│   │   ├── utils/         # Utility functions
+│   │   └── App.js         # Main App component
+│   └── package.json       # Frontend dependencies
+│
+└── README.md              # This file
+
+### Features
+
+View a list of all countries with essential information
+Search for countries by name
+Filter countries by region or language
+View detailed information about a specific country
+User authentication with JWT
+Favorite countries feature for authenticated users
+Responsive design using Tailwind CSS
+
+### Technologies Used
+
+Frontend
+
+React (Functional Components)
+React Router
+Context API for state management
+Tailwind CSS for styling
+Axios for API requests
+React Testing Library & Jest for testing
+
+Backend
+
+Node.js
+Express.js
+MongoDB & Mongoose
+JWT for authentication
+Jest for testing
+
+APIs
+
+REST Countries API for country data
+Custom backend API for user management
+
+Prerequisites
+
+Node.js (v14 or higher)
+MongoDB (local or Atlas)
+Git
+
+### Setup Instructions
+
+1. Clone the repository
+
+bash git clone <repository-url>
+cd countries-explorer
+
+2. Setup Backend
+
+bash cd backend
+npm install
+
+# Create a .env file with the following content
+# Replace the values as needed
+
+echo "NODE_ENV=development
+PORT=5003
+MONGO_URI=mongodb://localhost:27017/countries_app
+JWT_SECRET=your_jwt_secret" > .env
+
+# Start the backend server
+npm run dev
+
+3. Setup Frontend
+
+bash cd ../frontend
+npm install
+
+# Create a .env file for the frontend
+echo "REACT_APP_API_URL=http://localhost:5003/api" > .env
+
+# Start the frontend development server
+npm start
+
+### Running Tests
+
+Backend Tests
+
+bash cd backend
+npm test
+
+Frontend Tests
+
+bash cd frontend
+npm test
+
+Build Process
+
+Backend
+bash cd backend
+npm run build
+
+Frontend
+
+bash cd frontend
+npm run build
+
+The frontend build will be created in the frontend/build directory, which can be deployed to any static file hosting service.
+
+
+### Deployment
+Backend Deployment
+
+Setup a MongoDB database (MongoDB Atlas is recommended for production)
+Deploy the Node.js application to a service like Heroku, Render, or Railway
+Set the required environment variables (MONGO_URI, JWT_SECRET, NODE_ENV, PORT)
+
+Frontend Deployment
+
+Build the frontend application
+bashcd frontend
+npm run build
+
+Deploy the contents of the build directory to a static hosting service like Netlify, Vercel, or GitHub Pages
+
+### API Documentation
+
+REST Countries API Endpoints Used
+
+GET /all - Fetch all countries data
+GET /name/{name} - Search for a country by name
+GET /region/{region} - Filter countries by region
+GET /alpha/{code} - Get detailed information about a country by its alpha code
+
+Custom Backend API Endpoints
+User Authentication
+
+POST /api/users - Register a new user
+
+Request Body: { name, email, password }
+Response: User object with JWT token
+
+
+POST /api/users/login - Login user
+
+Request Body: { email, password }
+Response: User object with JWT token
+
+
+GET /api/users/profile - Get user profile (protected route)
+
+Headers: Authorization: Bearer {token}
+Response: User object
