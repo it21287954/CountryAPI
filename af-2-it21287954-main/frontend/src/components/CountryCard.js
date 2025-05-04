@@ -1,11 +1,20 @@
-// File: frontend/src/components/CountryCard.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
+const StyledCard = styled(Card)(({ theme }) => ({
+  maxWidth: 345,
+  transition: 'transform 0.2s',
+  '&:hover': {
+    transform: 'translateY(-5px)',
+  },
+  backgroundColor: '#e0f2f1', // Light teal, a bit darker than aliceblue
+}));
 
 const CountryCard = ({ country }) => {
   return (
-    <Card sx={{ maxWidth: 345, transition: 'transform 0.2s', '&:hover': { transform: 'translateY(-5px)' } }}>
+    <StyledCard>
       <CardActionArea component={Link} to={`/country/${country.cca3}`}>
         <CardMedia
           component="img"
@@ -29,7 +38,7 @@ const CountryCard = ({ country }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-    </Card>
+    </StyledCard>
   );
 };
 
